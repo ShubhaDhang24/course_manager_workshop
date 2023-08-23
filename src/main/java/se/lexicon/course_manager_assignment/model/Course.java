@@ -2,6 +2,7 @@ package se.lexicon.course_manager_assignment.model;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Course {
@@ -86,6 +87,26 @@ public class Course {
 
     public boolean enrollStudent(Student student)
     {
+        //TODO ADD STUDENT.class to Collections make sure you don't add null
+        Student student1=new Student(1,"Shubha","shubha@gmail.com","Jönköping-55464");
+        Student student2=new Student(2,"Sam","sam@gmail.com","Huskvarna-55468");
+
+        HashMap<Integer,Student> studentList=new HashMap<>();
+        if(studentList.values()==null)
+        {
+            return false;
+        }
+        studentList.put(student1.getId(), student1);
+        studentList.put(student2.getId(), student2);
         return true;
+    }
+    public boolean unEnrollStudent(HashMap<Integer,Student>  studentList)
+    {
+        if(studentList.containsKey(id))
+        {
+            studentList.remove(id);
+            return true;
+        }
+        return false;
     }
 }
